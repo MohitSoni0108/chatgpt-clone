@@ -1,0 +1,62 @@
+complete project design flow for every feature 
+
+1. define the api completely : method , endpoint , req body and res body 
+2.req reaches to server and server pass it to app .js where ot passes it to middle wares 
+3.note each middle ware weither modify the req , reject it or forward it 
+4.then req reaches to main route from where it passes to route table where mapping is done for that particular route with functions
+5.then for particular  route that function is called out in controller 
+set this things initially then start wrting th complete controller code 
+  checking the validation of each parameter step by step is hard therefore we define the things in validoator for zod file then pass a simple validation fcuntion to check the req body which we have recived have valid credentials which are require 
+now we are creating a new middle ware and a async handler 
+so controller function will simply define the complete business logic , now for any step if any error occurred async handler will catch the rror and pass it to error handler middleware which will send the corresponding res of error to user 
+ 
+
+ok so lets start with  login we will first define the complete flow of login ok 
+
+for features login :
+
+first defination of login function what it will do : user will pass its email and password , will check in dtaaabase if it exist if yes we will provide it token for remain authenticated for defined time 
+
+entity : user 
+
+database deisgn : user will have many fields which we have already defined in user schema
+
+now flow :
+
+api  defination : 1.method :post beacuse we ares ending the data 
+
+                           2.api end point : localhost:5000/api/auth/login 
+
+3.req body : email and password 
+
+4.response body : if success will send it token to browsrr  which will be not be showin in response body but for our understanding of success i am writing : for scuess we will just whow sucessfully login
+
+
+
+backend flow :
+
+server will get req 
+
+req will be pass to app 
+
+the req will pass thorugh the middlewares 
+
+then it will have authentication file route 
+
+in that file route it will go to route which has login function contoller 
+
+now coming to login function contorller 
+
+writing the logic 
+
+so lets do it in code implimentation till now then we will move to next part 
+
+
+HOW TO APPRACH A FEATURE OF A MODULES <ALWAYS REMEMEBR THIS FLOW FOR MAKING FEATURES PERFECTLY >
+1.DEFINE FEATURE 
+2. ENTITY DEFIANTIONS AND SCHEMA DESIGN WITH THE GOAL DEFINATION OF THE FEATURE 
+3. API DEFINATION : METHOD , ENDPOINT , HEADER , REQ BODY , RES BODY 
+4.SERVER RECIVES THE REQ _> REQ PASS TO APP.JS -> MIDDLWAREPARSING PART UNDERSTAING -> MAIN ROUTE 
+5.MAIN ROUTE FILE -> SUB ROUTE METHODS MAPPING CONTROLLERS 
+THEN DEFINE THE COMPLETE CONTROLLER LOGIC STEP BY STPE WITH ERROR HANDLING AND ERROR FLOW REPONSE 
+AFTER COMPLETION OF LOGIC THEN TEST WITH ALL TETS CASES FOR ALL TYOES OF ERRORS AND SUCCESS 

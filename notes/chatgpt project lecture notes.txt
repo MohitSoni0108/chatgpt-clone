@@ -1,0 +1,20 @@
+lec 16 
+making the backend of the chatgpt so there u have to handle the things in this way 
+1. making the database design 
+2.then making the schema 
+
+
+
+understanding the best practice of industry while creating a product 
+
+1.first always design a database for you product , do the database analysis and decide which database to go for 
+2.then create schmea for ur database in model folder 
+3. then start the server : note server code should be good minimal just start the server check its listening and handle the error if not 
+4.then make a new file config in which u have to connect to dtabase because we can have many database at a time therefore and also handle error at that case -> import that function to server filwe and then before starting connect that databse 
+5. put the environment variables and put them in .env file 
+6. then we dfine all the features and corroponding ais 
+7.then we do the grouoing of api and then make the router 
+8.
+
+
+

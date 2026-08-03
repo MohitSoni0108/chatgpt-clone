@@ -1,0 +1,27 @@
+chatgpt project 
+
+
+PRODUCT
+│
+├── What problem does it solve?
+│
+├── Who are the users?
+│
+├── What features does it provide?
+│
+└── Design each feature
+      │
+      ├── 1. Feature Flow
+      │      (How should it work?)
+      │
+      ├── 2. Backend Design
+      │      ├── Entities
+      │      ├── Relationships
+      │      ├── Database Schema
+      │      ├── APIs
+      │      └── Business Logic
+      │
+      └── 3. Frontend Design
+             ├── Pages
+             ├── Components
+             └── State & API Integration
