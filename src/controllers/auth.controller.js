@@ -7,6 +7,8 @@ import { signupSchema , loginSchema } from "../validators/auth.validator.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
+import cookieOptions from "../constants/cookieOptions.js";
+
 
 export const signup = asyncHandler(async (req, res) => {
 
@@ -79,14 +81,7 @@ export const login = asyncHandler(async (req, res) => {
 
     // Step 8 : Cookie Options
 
-    const cookieOptions = {
-
-        httpOnly: true,
-        secure: false,
-        sameSite: "lax",
-        maxAge: 24 * 60 * 60 * 1000
-
-    };
+  
 
     // Step 9 : Hide Password
 
@@ -115,3 +110,31 @@ export const login = asyncHandler(async (req, res) => {
         );
 
 });
+
+
+// Logout Controller
+
+export const logout = asyncHandler(async (req, res) => {
+
+    return res
+
+        .status(200)
+
+        .clearCookie("token", cookieOptions)
+
+        .json(
+
+            new ApiResponse(
+
+                200,
+
+                null,
+
+                "Logout Successful"
+
+            )
+
+        );
+
+});
+
