@@ -19,4 +19,48 @@ const createChat = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, chat, "Chat created successfully"));
 });
 
-export { createChat };
+const getChats = asyncHandler(async (req, res) => {
+
+    const chats = await Chat
+        .find({
+            owner: req.user._id,
+        })
+        .sort({
+            updatedAt: -1,
+        });
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            chats,
+            "Chats retrieved successfully"
+        )
+    );
+
+});
+
+ const getSingleChat = asyncHandler(async (req, res) => {
+
+    const { chatId } = req.params;
+
+    const chat = await Chat.findOne({
+        _id: chatId,
+        owner: req.user._id,
+    });
+
+    if (!chat) {
+        throw new ApiError(404, "Chat not found");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            chat,
+            "Chat retrieved successfully"
+        )
+    );
+
+});
+
+
+export { createChat  , getChats, getSingleChat };
