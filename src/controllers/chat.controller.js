@@ -62,5 +62,64 @@ const getChats = asyncHandler(async (req, res) => {
 
 });
 
+export const renameChat = asyncHandler(async (req, res) => {
+
+    const { chatId } = req.params;
+
+    const { title } = req.body;
+
+    if (!title?.trim()) {
+        throw new ApiError(400, "Title is required");
+    }
+
+    const updatedChat = await Chat.findOneAndUpdate(
+        {
+            _id: chatId,
+            owner: req.user._id,
+        },
+        {
+            title: title.trim(),
+        },
+        {
+            new: true,
+        }
+    );
+
+    if (!updatedChat) {
+        throw new ApiError(404, "Chat not found");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            updatedChat,
+            "Chat renamed successfully"
+        )
+    );
+
+});
+export const deleteChat = asyncHandler(async (req, res) => {
+
+    const { chatId } = req.params;
+
+    const deletedChat = await Chat.findOneAndDelete({
+        _id: chatId,
+        owner: req.user._id,
+    });
+
+    if (!deletedChat) {
+        throw new ApiError(404, "Chat not found");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            null,
+            "Chat deleted successfully"
+        )
+    );
+
+});
+
 
 export { createChat  , getChats, getSingleChat };
