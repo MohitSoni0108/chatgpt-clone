@@ -11,7 +11,7 @@ const authenticateUser = asyncHandler(async (req, res, next) => {
 
   // Read token from cookie
 
-  const token = req.cookies?.token;
+    const token = req.cookies?.accessToken;
 
   // Cookie missing
 
@@ -23,7 +23,7 @@ const authenticateUser = asyncHandler(async (req, res, next) => {
 
   const decodedToken = jwt.verify(
     token,
-    process.env.JWT_SECRET
+     process.env.JWT_ACCESS_SECRET
   );
 
   // Find User

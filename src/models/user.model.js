@@ -24,6 +24,15 @@ import bcrypt from "bcrypt";
       required: true,
       select: false,
     },
+    refreshTokenHash: {
+  type: String,
+  default: null,
+},
+
+refreshTokenExpiresAt: {
+  type: Date,
+  default: null,
+},
   },
  {
     timestamps: true,

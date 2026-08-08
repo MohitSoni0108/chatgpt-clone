@@ -1,6 +1,8 @@
 import { ZodError } from "zod";
 
 const errorHandler = (error, req, res, next) => {
+  console.error(error);
+
   if (error instanceof ZodError) {
     return res.status(400).json({
       success: false,
